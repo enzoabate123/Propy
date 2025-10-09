@@ -167,10 +167,9 @@ poetry.toml
 pyrightconfig.json
 
 # índices de embeddings (gerados)
-index/
-backend/index/
+
 *.npz
 *.faiss
 *.index
 meta.jsonl
-backend/index/vectors_normed.npz
+
