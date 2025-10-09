@@ -166,3 +166,10 @@ poetry.toml
 # LSP config files
 pyrightconfig.json
 
+# índices de embeddings (gerados)
+index/
+backend/index/
+*.npz
+*.faiss
+*.index
+meta.jsonl
