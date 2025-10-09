@@ -173,3 +173,4 @@ backend/index/
 *.faiss
 *.index
 meta.jsonl
+backend/index/vectors_normed.npz
