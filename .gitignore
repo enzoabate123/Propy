@@ -168,8 +168,4 @@ pyrightconfig.json
 
 # índices de embeddings (gerados)
 
-*.npz
-*.faiss
-*.index
-meta.jsonl
 
