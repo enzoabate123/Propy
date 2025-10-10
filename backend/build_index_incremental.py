@@ -1,5 +1,5 @@
-# build_index_incremental.py — incremental + metadado de projeto
-import os, json, hashlib
+# build_index_incremental.py — incremental + metadado de projeto (ID antes do primeiro "_")
+import os, json, hashlib, re
 from pathlib import Path
 import numpy as np
 from openai import OpenAI
@@ -74,9 +74,25 @@ def embed_batch(texts):
     return [np.array(d.embedding, dtype=np.float32) for d in resp.data]
 
 def infer_project(path: Path) -> str:
-    # projeto = primeira pasta dentro de data/ (data/<projeto>/arquivo)
+    """
+    Extrai o ID do projeto a partir do nome do arquivo:
+      - Regra principal: tudo que vem ANTES do primeiro '_' é o ID.
+        Ex.: '202100185-7_relatorio.pdf' -> '202100185-7'
+      - Validação simples: começa com dígito; aceita hífens.
+      - Fallback 1: usa a primeira subpasta em data/<projeto>/arquivo
+      - Fallback 2: '__default__'
+    """
+    name = path.name
+    if "_" in name:
+        proj = name.split("_", 1)[0].strip()
+        if re.match(r"^\d[\d-]*$", proj):
+            return proj
+
     rel = path.relative_to(DATA_DIR)
-    return (rel.parts[0] if len(rel.parts) > 1 else "__default__")
+    if len(rel.parts) > 1:
+        return rel.parts[0]
+
+    return "__default__"
 
 # ---------- load existing ----------
 def load_existing():
@@ -85,13 +101,16 @@ def load_existing():
         mat = data["mat"]
     else:
         mat = np.empty((0, 1536), dtype=np.float32)
+
     metas = []
     if META_PATH.exists():
         with open(META_PATH, "r", encoding="utf-8") as fr:
             metas = [json.loads(l) for l in fr]
+
     manifest = {}
     if MANIFEST.exists():
         manifest = json.loads(MANIFEST.read_text(encoding="utf-8"))
+
     return mat, metas, manifest
 
 # ---------- save all ----------
@@ -100,10 +119,13 @@ def save_all(mat, metas, manifest):
     if mat.size:
         norms = np.linalg.norm(mat, axis=1, keepdims=True)
         mat = mat / np.clip(norms, 1e-12, None)
+
     np.savez_compressed(VEC_PATH, mat=mat)
+
     with open(META_PATH, "w", encoding="utf-8") as fw:
         for m in metas:
             fw.write(json.dumps(m, ensure_ascii=False) + "\n")
+
     MANIFEST.write_text(json.dumps(manifest, ensure_ascii=False, indent=2), encoding="utf-8")
 
 # ---------- main ----------
@@ -135,6 +157,7 @@ def main():
             project = infer_project(f)
             B = 64
             local_count = 0
+
             for i in range(0, len(chunks), B):
                 b = chunks[i:i+B]
                 embs = embed_batch(b)
