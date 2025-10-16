@@ -169,3 +169,6 @@ pyrightconfig.json
 # índices de embeddings (gerados)
 
 
+backend/respostas_NI.json
+/backend/data
+backend/index/meta.jsonl

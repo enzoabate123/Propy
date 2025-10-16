@@ -1,0 +1,71 @@
+{
+    "Descricao_da_Invencao": {
+      "Titulo_da_Invencao": "Insira o título técnico e conciso da invenção.",
+      "Palavras_Chave": ["palavra1", "palavra2", "palavra3"],
+      "Problema_Tecnico": "Descreva o problema técnico que a invenção resolve.",
+      "Abordagem_Antes_da_Invencao": "Explique como o problema era tratado anteriormente.",
+      "Exemplos_ou_Resultados": "Inclua resultados experimentais, protótipos ou casos de teste (se houver).",
+      "Como_a_Invencao_Soluciona": "Explique como a invenção resolve ou minimiza o problema técnico.",
+      "Aplicacao_da_Invencao": "Descreva onde e como pode ser aplicada (produto, processo, sistema, etc).",
+      "Vantagens_Esperadas": [
+        "Vantagem 1",
+        "Vantagem 2",
+        "Vantagem 3"
+      ],
+      "Anexos": [
+        "Desenho técnico",
+        "Fluxograma",
+        "Foto do protótipo"
+      ],
+      "Componentes_da_Invencao": [
+        "Componente 1",
+        "Componente 2"
+      ],
+      "Interligacao_Entre_Componentes": "Descreva como os componentes se conectam ou interagem.",
+      "Estagio_de_Desenvolvimento": "Ideia / Protótipo / Teste Piloto / Aplicação Industrial"
+    },
+  
+    "Dados_Gerais": {
+      "Gerencia_de_Origem": "Ex: CENPES / GINP",
+      "Origem_da_Invencao": "Projeto / Serviço Técnico / Trabalho Acadêmico",
+      "Tipo_de_Invencao": "Produto / Processo / Software / Equipamento / Aperfeiçoamento",
+      "Relaciona_a_NI_Anterior": "Sim / Não - se sim, informe o número ou nome da NI anterior",
+      "Area_de_Aplicacao": "Ex: Engenharia de Corrosão, Processos Químicos, etc.",
+      "Pais_de_Deposito": "Brasil / EUA / Outro",
+      "Titularidade": "Petrobras / Universidade Parceira / Outro",
+      "Utilizacao_na_Petrobras": {
+        "Esta_Sendo_Utilizada": "Sim / Não",
+        "Descricao": "Explique onde e como está sendo usada."
+      },
+      "Divulgacao": {
+        "Ja_Foi_Divulgada": "Sim / Não",
+        "Detalhes": "Evento, artigo, congresso, etc."
+      },
+      "Comercializacao": {
+        "Prevista": "Sim / Não",
+        "Empresa_Envolvida": "Nome da empresa e estágio da negociação"
+      },
+      "Urgencia": {
+        "Existe": "Sim / Não",
+        "Motivo": "Ex: Divulgação prevista em congresso em 30 dias."
+      }
+    },
+  
+    "Inventores": [
+      {
+        "Usuario": "Com chave / Sem chave",
+        "Chave": "XXXXXX",
+        "Nome": "Nome completo do inventor",
+        "Lotacao": "Ex: CENPES / Unidade / Universidade",
+        "Cargo": "Engenheiro / Pesquisador / Técnico",
+        "Profissao": "Profissão base",
+        "Empresa": "Petrobras / Parceira",
+        "CPF": "000.000.000-00",
+        "Email": "email@dominio.com",
+        "Telefone": "(21) 99999-9999"
+      }
+    ],
+  
+    "Observacoes_Finais": "Campo livre para incluir complementos técnicos, observações sobre confidencialidade ou alinhamento com programas de P&D."
+  }
+  
